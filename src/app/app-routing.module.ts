@@ -13,7 +13,13 @@ const routes: Routes = [
     path:'login', loadChildren:()=> import('./features/login/login.module').then(module => module.LoginModule)
     },
     {
-      path:'main', loadChildren:()=> import('./features/main/main.module').then(module => module.MainModule)
+      path:'home', loadChildren:()=> import('./features/main/main.module').then(module => module.MainModule)
+    },
+    {
+      path:'terms-of-service', loadChildren:()=> import('./features/terms/terms.module').then(module => module.TermsModule)
+    },
+    {
+      path:'privacy-policy', loadChildren:()=> import('./features/privacy/privacy.module').then(module => module.PrivacyModule)
     }
   ]
 }];
