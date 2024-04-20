@@ -1,6 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 declare const FB: any;
 @Component({
@@ -10,12 +11,27 @@ declare const FB: any;
 })
 export class LoginScreenComponent {
 
+loginForm!: FormGroup;
+showPassword = false;
+icon:string = 'bi-eye-fill';
 
 constructor(
   private router: Router,
   private service: AuthService,
-  private _ngZone: NgZone
+  private _ngZone: NgZone,
+  private fb: FormBuilder
   ) {}
+
+ngOnInit() {
+  this.createForm();
+}
+
+createForm() {
+  this.loginForm = this.fb.group({
+    email: this.fb.control('', Validators.required),
+    password: this.fb.control('', Validators.required)
+  })
+}
 
 async login() {
 
@@ -32,15 +48,13 @@ async login() {
   }, {scope: 'email' })
 }
 
-test() {
-  this.service.test().subscribe(
-    response => {
-      console.log('Success!', response);
-    },
-    error => {
-      console.error('Error!', error);
-    }
-  );
+togglePassword() {
+  this.showPassword = !this.showPassword;
+  if (this.showPassword) {
+    this.icon = 'bi-eye-slash-fill'
+  } else {
+    this.icon = 'bi-eye-fill'
+  }
 }
 
 }

@@ -11,6 +11,12 @@ export class MainScreenComponent {
 
   constructor(private router: Router, private service: AuthService, private _ngZone: NgZone) { }
 
+  headerStyle:object = {
+    'background-color': 'white',
+    'border': '1px solid gray',
+  };
+
+
 logout() {
   this.service.signOutExternal();
   this._ngZone.run(() => {

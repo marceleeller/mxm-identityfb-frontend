@@ -1,0 +1,53 @@
+.ask-title {
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+  color: gray;
+}
+
+.register-text {
+  font-size: 13px;
+  text-decoration: none;
+  color: black;
+}
+
+.card {
+  max-width: 540px;
+  padding: 40px;
+  box-shadow: 0 4px 64px  rgba(0, 0, 0, 0.05);
+}
+
+.card-body {
+  padding: 0;
+}
+
+.btn-socials {
+  background-color: #F5F5F5;
+  height: 55px;
+  font-size: 12px;
+  width: 100%;
+}
+.btn-socials:hover {
+  background-color: #dbdbdb;
+}
+
+.btn-primary {
+  width: 50%;
+}
+
+.input-group-text {
+  cursor: pointer;
+}
+
+.girl-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .girl-banner {
+    display: none;
+  }
+}
+

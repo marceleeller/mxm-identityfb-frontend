@@ -1,5 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary {
+  background-color: black;
+  border: 1px solid black;
+  height: 50px;
+  box-shadow: 0 4px 6px  rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+.btn-primary:active, .btn-outline-primary:active {
+  background-color: black !important;
+  color: white !important;
+  border: 2px solid black !important;
+}
+
+.btn:disabled {
+  background-color: black;
+  border: 1px solid black;
+  opacity: .9;
+  box-shadow: none !important;
+}
+
+.form-control {
+  height: 50px;
+  font-size: 14px;
+}
+
+.ng-invalid.ng-dirty:not(form)  {
+  border: 1px solid red;
+}
+
+.ng-invalid.ng-dirty:not(form):focus {
+  border: 1px solid red !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 51, 51, 0.356) !important;
+}
+
+.invalid-feedback {
+  display: block;
+  position: absolute;
+  margin-top: .3rem;
+  color: red;
+  font-size: 12px;
 }
