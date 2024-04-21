@@ -1,5 +1,16 @@
-<app-header [style]="headerStyle"></app-header>
+<app-header [style]="headerStyle" [bgStyle]="bgHeaderStyle"></app-header>
 
-<div>
-  <button (click)="logout()">Sair</button>
-</div>
+<main>
+  <div class="bg-gray"></div>
+  <div class="content p-3 d-flex justify-content-center">
+    <div class="card">
+      <div class="card-body">
+        <div>
+          <button class="btn btn-primary" (click)="logout()">Sair</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</main>

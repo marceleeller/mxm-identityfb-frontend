@@ -1,0 +1,14 @@
+.bg-gray {
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  background-color: #F5F5F5;
+}
+
+.card {
+  margin-top: 80px;
+  max-width: 1200px;
+  min-height: 70vh;
+  width: 100%;
+  box-shadow: 0 4px 64px  rgba(0, 0, 0, 0.05);
+}
