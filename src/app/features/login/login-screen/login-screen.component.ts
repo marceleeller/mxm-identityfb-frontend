@@ -1,6 +1,8 @@
 import { Component, NgZone } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 declare const FB: any;
 @Component({
@@ -10,37 +12,65 @@ declare const FB: any;
 })
 export class LoginScreenComponent {
 
+showPassword = false;
+icon:string = 'bi-eye-fill';
 
 constructor(
   private router: Router,
   private service: AuthService,
-  private _ngZone: NgZone
+  private _ngZone: NgZone,
+  private toastr: ToastrService
   ) {}
 
-async login() {
+loginForm = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
+});
+
+login() {
+    this.service.login(this.loginForm.value).subscribe({
+      next: (response:any) => {
+        this.toastr.success(response.message, '');
+        this.service.storeToken(response.tokenResponse.token);
+        this._ngZone.run(() => {
+          this.router.navigate(['/home']);
+        })
+      },
+      error: (error:any) => {
+        if (error.status === 401) {
+          this.toastr.error(error.error, '');
+        } else {
+          this.toastr.error(error.error, '');
+        }
+      }
+    })
+}
+
+async loginFacebook() {
 
   FB.login(async (result:any) => {
     await this.service.LoginWithFacebook(result.authResponse.accessToken).subscribe(
-      (x:any) => {
+      (response:any) => {
+        this.toastr.success(response.message, '');
+        this.service.storeToken(response.tokenResponse.token);
         this._ngZone.run(() => {
           this.router.navigate(['/home']);
-        })},
+        }
+      )},
       (error:any) => {
-        console.log(error);
+        this.toastr.error(error.error, '');
       }
     );
   }, {scope: 'email' })
 }
 
-test() {
-  this.service.test().subscribe(
-    response => {
-      console.log('Success!', response);
-    },
-    error => {
-      console.error('Error!', error);
-    }
-  );
+togglePassword() {
+  this.showPassword = !this.showPassword;
+  if (this.showPassword) {
+    this.icon = 'bi-eye-slash-fill'
+  } else {
+    this.icon = 'bi-eye-fill'
+  }
 }
 
 }

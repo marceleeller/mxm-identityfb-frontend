@@ -1,0 +1,76 @@
+<app-header></app-header>
+
+<main>
+  <app-base-card>
+    <div class="row">
+      <div class="col-8">
+        <p>Bem vindo ao <strong>DesafioMXM</strong></p>
+      </div>
+      <div class="col-4 px-0">
+        <p class="ask-title">Já tem uma conta?</p>
+        <a routerLink="/login" class="register-text">Entrar</a>
+      </div>
+    </div>
+    <h1 class="card-title">Registrar</h1>
+
+    <!-- Register form -->
+    <form class="d-flex flex-column mt-4" [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="mb-4">
+        <label for="email" class="mb-2">Insira seu email</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="endereço de email">
+        <div class="invalid-feedback" *ngIf="this.registerForm.get('email')?.dirty && this.registerForm.get('email')?.hasError('required')">
+          Email é obrigatório.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-4">
+            <label for="firstName" class="mb-2">Nome</label>
+            <input type="text" class="form-control" formControlName="firstName" placeholder="nome">
+            <div class="invalid-feedback" *ngIf="this.registerForm.get('firstName')?.dirty && this.registerForm.get('firstName')?.hasError('required')">
+              Nome é obrigatório.
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-4">
+            <label for="lastName" class="mb-2">Sobrenome</label>
+            <input type="text" class="form-control" formControlName="lastName" placeholder="sobrenome">
+            <div class="invalid-feedback" *ngIf="this.registerForm.get('lastName')?.dirty && this.registerForm.get('lastName')?.hasError('required')">
+              Sobrenome é obrigatório.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mb-4">
+            <label for="password" class="mb-2">Defina uma senha</label>
+              <div class="input-group">
+                <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" formControlName="password" placeholder="senha">
+                <i class="input-group-text bi {{icon}}" (click)="toggleVisibility('password')"></i>
+              </div>
+              <div class="invalid-feedback" *ngIf="this.registerForm.get('password')?.dirty && this.registerForm.get('password')?.hasError('required')">
+                Senha é obrigatória.
+              </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mb-4">
+            <label for="confirmPassword" class="mb-2">Confirme sua senha</label>
+              <div class="input-group">
+                <input type="{{ showConfirmPassword ? 'text' : 'password' }}" class="form-control" formControlName="confirmPassword" placeholder="confirme sua senha">
+                <i class="input-group-text bi {{iconConfirmPassword}}" (click)="toggleVisibility('confirmPassword')"></i>
+              </div>
+              <div class="invalid-feedback" *ngIf="this.registerForm.get('confirmPassword')?.dirty && this.registerForm.get('confirmPassword')?.hasError('required')">
+                Confirmar senha é obrigatório.
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary align-self-end mt-4">Registrar</button>
+    </form>
+  </app-base-card>
+
+</main>
