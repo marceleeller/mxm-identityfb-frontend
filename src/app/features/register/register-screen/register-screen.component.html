@@ -78,7 +78,7 @@
       <button type="submit" class="btn btn-primary align-self-end mt-5" [disabled]="this.registerForm.invalid">Registrar</button>
     </form>
       <p class="terms-text mt-1">
-        Ao clicar em registrar, você concorda com nossos <a href="#" class="register-text">Termos de Serviço</a> e <a href="#" class="register-text">Política de Privacidade</a>.
+        Ao clicar em registrar, você concorda com nossa <a [routerLink]="'/registrar/privacidade'" class="register-text">Política de Privacidade</a>.
       </p>
   </app-base-card>
 

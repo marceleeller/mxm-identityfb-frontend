@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class PrivacyScreenComponent {
 
+  headerStyle:object = {
+    'background-color': 'white',
+    'border': '1px solid gray',
+  };
+
+  bgHeaderStyle: object = {
+    'background-color': '#F5F5F5',
+  };
 }

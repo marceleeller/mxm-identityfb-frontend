@@ -1,1 +1,33 @@
-<p>facebook-removal-screen works!</p>
+<app-header [style]="headerStyle" [bgStyle]="bgHeaderStyle"></app-header>
+
+<main>
+  <div class="bg-gray"></div>
+  <div class="content p-3 d-flex justify-content-center">
+    <div class="card">
+
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div class="card-title">
+          <h1>Instruções de exclusão de dados do Facebook</h1>
+        </div>
+
+        <div class="card-text ">
+          <h3>De acordo com a política do Facebook, temos que fornecer URL de retorno de chamada de exclusão de dados do usuário ou URL de instruções de exclusão de dados.</h3>
+          <p>Você pode remover suas informações de login do Facebook seguindo estas etapas:</p>
+          <ol>
+              <li>Vá para a configuração e privacidade da sua conta do Facebook. Clique em "Configurações"</li>
+              <li>Procure por "Aplicativos e Sites" e você verá todos os aplicativos e sites vinculados ao seu Facebook</li>
+              <li>Pesquise e clique em "DesafioMXM" na barra de pesquisa</li>
+              <li>Role e clique em "Remover"</li>
+              <li>Parabéns, você removeu com sucesso</li>
+          </ol>
+        </div>
+
+        <div class="align-self-center align-self-sm-end">
+            <button class="btn btn-primary" [routerLink]="'/registrar'">Voltar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</main>
