@@ -32,16 +32,10 @@ login() {
       next: (response:any) => {
         this.toastr.success(response.message, '');
         this.service.storeToken(response.tokenResponse.token);
-        this._ngZone.run(() => {
-          this.router.navigate(['/home']);
-        })
+        this.router.navigate(['/home']);
       },
       error: (error:any) => {
-        if (error.status === 401) {
-          this.toastr.error(error.error, '');
-        } else {
-          this.toastr.error(error.error, '');
-        }
+        this.toastr.error(error.error, '');
       }
     })
 }

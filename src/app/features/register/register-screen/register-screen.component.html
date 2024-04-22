@@ -8,7 +8,7 @@
       </div>
       <div class="col-4 px-0">
         <p class="ask-title">Já tem uma conta?</p>
-        <a routerLink="/login" class="register-text">Entrar</a>
+        <a routerLink="/entrar" class="register-text">Entrar</a>
       </div>
     </div>
     <h1 class="card-title">Registrar</h1>
@@ -21,12 +21,15 @@
         <div class="invalid-feedback" *ngIf="this.registerForm.get('email')?.dirty && this.registerForm.get('email')?.hasError('required')">
           Email é obrigatório.
         </div>
+        <div class="invalid-feedback" *ngIf="this.registerForm.get('email')?.hasError('email')">
+          Insira um email válido.
+        </div>
       </div>
       <div class="row">
         <div class="col">
           <div class="mb-4">
             <label for="firstName" class="mb-2">Nome</label>
-            <input type="text" class="form-control" formControlName="firstName" placeholder="nome">
+            <input type="text" class="form-control" formControlName="firstName" placeholder="nome" (keypress)="formService.onlyCharacters($event)">
             <div class="invalid-feedback" *ngIf="this.registerForm.get('firstName')?.dirty && this.registerForm.get('firstName')?.hasError('required')">
               Nome é obrigatório.
             </div>
@@ -35,7 +38,7 @@
         <div class="col">
           <div class="mb-4">
             <label for="lastName" class="mb-2">Sobrenome</label>
-            <input type="text" class="form-control" formControlName="lastName" placeholder="sobrenome">
+            <input type="text" class="form-control" formControlName="lastName" placeholder="sobrenome" (keypress)="formService.onlyCharacters($event)">
             <div class="invalid-feedback" *ngIf="this.registerForm.get('lastName')?.dirty && this.registerForm.get('lastName')?.hasError('required')">
               Sobrenome é obrigatório.
             </div>
@@ -43,34 +46,40 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col-sm-12 col-md-6 ">
           <div class="mb-4">
             <label for="password" class="mb-2">Defina uma senha</label>
               <div class="input-group">
                 <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" formControlName="password" placeholder="senha">
                 <i class="input-group-text bi {{icon}}" (click)="toggleVisibility('password')"></i>
               </div>
-              <div class="invalid-feedback" *ngIf="this.registerForm.get('password')?.dirty && this.registerForm.get('password')?.hasError('required')">
+              <div class="invalid-feedback " *ngIf="this.registerForm.get('password')?.dirty && this.registerForm.get('password')?.hasError('required')">
                 Senha é obrigatória.
+              </div>
+              <div class="invalid-feedback password-feedback" *ngIf="this.registerForm.get('password')?.hasError('strongPassword')">
+                Requisito: 6 caracteres, minúsculas, maiúsculas, números e caractere especial.
               </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-sm-12 col-md-6 ">
           <div class="mb-4">
-            <label for="confirmPassword" class="mb-2">Confirme sua senha</label>
+            <label for="passwordConfirmation" class="mb-2">Confirme sua senha</label>
               <div class="input-group">
-                <input type="{{ showConfirmPassword ? 'text' : 'password' }}" class="form-control" formControlName="confirmPassword" placeholder="confirme sua senha">
+                <input type="{{ showConfirmPassword ? 'text' : 'password' }}" class="form-control" formControlName="passwordConfirmation" placeholder="confirme sua senha">
                 <i class="input-group-text bi {{iconConfirmPassword}}" (click)="toggleVisibility('confirmPassword')"></i>
               </div>
-              <div class="invalid-feedback" *ngIf="this.registerForm.get('confirmPassword')?.dirty && this.registerForm.get('confirmPassword')?.hasError('required')">
-                Confirmar senha é obrigatório.
+              <div class="invalid-feedback" *ngIf="this.registerForm.get('passwordConfirmation')?.hasError('matchPassword')">
+                Senhas não conferem.
               </div>
           </div>
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary align-self-end mt-4">Registrar</button>
+      <button type="submit" class="btn btn-primary align-self-end mt-5" [disabled]="this.registerForm.invalid">Registrar</button>
     </form>
+      <p class="terms-text mt-1">
+        Ao clicar em registrar, você concorda com nossa <a [routerLink]="'/registrar/privacidade'" class="register-text">Política de Privacidade</a>.
+      </p>
   </app-base-card>
 
 </main>
