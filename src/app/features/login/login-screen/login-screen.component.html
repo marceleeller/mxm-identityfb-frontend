@@ -1,72 +1,60 @@
 <app-header></app-header>
 
 <main>
-  <div class="container">
+  <app-base-card>
     <div class="row">
-      <div class="col-md-6 girl-banner">
-        <img src="../../../../assets/girl-banner.svg" alt="girl drawing">
+      <div class="col-8">
+        <p>Bem vindo ao <strong>DesafioMXM</strong></p>
       </div>
-      <div class="col-md-6">
-        <div class="card mt-5 mx-4 mx-md-0 mt-md-0">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-8">
-                <p>Bem vindo ao <strong>DesafioMXM</strong></p>
-              </div>
-              <div class="col-4 px-0">
-                <p class="ask-title">Não tem uma conta?</p>
-                <a routerLink="/register" class="register-text">Registre-se</a>
-              </div>
-            </div>
-            <h1 class="card-title">Entrar</h1>
-            <div class="row my-3">
-              <div class="col-12 col-lg-6">
-                <button class="btn btn-socials d-flex justify-content-center align-items-center gap-2" (click)="login()" >
-                  <img src="../../../../assets/google.svg" alt="google icon">
-                  Continue com Google
-                </button>
-              </div>
-              <div class="col-12 col-lg-6 mt-2 mt-lg-0">
-                <button class="btn btn-socials d-flex justify-content-center align-items-center gap-2" (click)="loginFacebook()" >
-                  <img src="../../../../assets/facebook.svg" alt="facebook icon">
-                  Continue com Facebook
-                </button>
-              </div>
-            </div>
-            <div class="row d-flex align-items-center">
-              <div class="col-5"><hr></div>
-              <div class="col-2 d-flex justify-content-center">Or</div>
-              <div class="col-5"><hr></div>
-            </div>
-
-            <form [formGroup]="loginForm" (ngSubmit)="login()" class="d-flex flex-column mt-3">
-              <div class="mb-4">
-                <label for="email" class="mb-2">Insira seu email</label>
-                <input type="email" class="form-control" formControlName="email" placeholder="endereço de email">
-                <div class="invalid-feedback" *ngIf="this.loginForm.get('email')?.dirty && this.loginForm.get('email')?.hasError('required')">
-                  Email é obrigatório.
-                </div>
-              </div>
-              <div class="mb-4">
-                <label for="password" class="mb-2">Insira sua senha</label>
-                  <div class="input-group">
-                    <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" formControlName="password" placeholder="senha">
-                    <i class="input-group-text bi {{icon}}" (click)="togglePassword()"></i>
-
-                  </div>
-                  <div class="invalid-feedback" *ngIf="this.loginForm.get('password')?.dirty && this.loginForm.get('password')?.hasError('required')">
-                    Senha é obrigatória.
-                  </div>
-              </div>
-
-              <button type="submit" class="btn btn-primary align-self-end mt-4"[disabled]="loginForm.invalid">Entrar</button>
-            </form>
-
-
-
-          </div>
-        </div>
+      <div class="col-4 px-0">
+        <p class="ask-title">Não tem uma conta?</p>
+        <a routerLink="/register" class="register-text">Registre-se</a>
       </div>
     </div>
-  </div>
+    <h1 class="card-title">Entrar</h1>
+    <div class="row my-3">
+      <div class="col-12 col-lg-6">
+        <button class="btn btn-socials d-flex justify-content-center align-items-center gap-2" (click)="login()" >
+          <img src="../../../../assets/google.svg" alt="google icon">
+          Continue com Google
+        </button>
+      </div>
+      <div class="col-12 col-lg-6 mt-2 mt-lg-0">
+        <button class="btn btn-socials d-flex justify-content-center align-items-center gap-2" (click)="loginFacebook()" >
+          <img src="../../../../assets/facebook.svg" alt="facebook icon">
+          Continue com Facebook
+        </button>
+      </div>
+    </div>
+    <div class="row d-flex align-items-center">
+      <div class="col-5"><hr></div>
+      <div class="col-2 d-flex justify-content-center">Or</div>
+      <div class="col-5"><hr></div>
+    </div>
+
+    <!-- Login form -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="d-flex flex-column mt-3">
+      <div class="mb-4">
+        <label for="email" class="mb-2">Insira seu email</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="endereço de email">
+        <div class="invalid-feedback" *ngIf="this.loginForm.get('email')?.dirty && this.loginForm.get('email')?.hasError('required')">
+          Email é obrigatório.
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="password" class="mb-2">Insira sua senha</label>
+          <div class="input-group">
+            <input type="{{ showPassword ? 'text' : 'password' }}" class="form-control" formControlName="password" placeholder="senha">
+            <i class="input-group-text bi {{icon}}" (click)="togglePassword()"></i>
+
+          </div>
+          <div class="invalid-feedback" *ngIf="this.loginForm.get('password')?.dirty && this.loginForm.get('password')?.hasError('required')">
+            Senha é obrigatória.
+          </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary align-self-end mt-4"[disabled]="loginForm.invalid">Entrar</button>
+    </form>
+  </app-base-card>
+
 </main>

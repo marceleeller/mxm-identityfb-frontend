@@ -28,3 +28,7 @@
 .input-group-text {
   cursor: pointer;
 }
+
+form {
+  margin-top: 1.8rem !important;
+}

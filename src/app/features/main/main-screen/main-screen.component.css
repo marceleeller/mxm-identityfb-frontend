@@ -1,3 +1,8 @@
+h2 {
+  font-size: 55px;
+  font-weight: 500;
+}
+
 .bg-gray {
   position: absolute;
   height: 150px;
@@ -11,4 +16,65 @@
   min-height: 70vh;
   width: 100%;
   box-shadow: 0 4px 64px  rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+.profile {
+  position: relative;
+  top: -95px;
+  width: 300px;
+  height: 150px;
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  background-color: #004a76;
+  border-radius: 50%;
+  border: 6px solid white;
+}
+
+.profile-picture img {
+  width: 90px;
+  margin-top: -10px;
+}
+
+.profile-name span {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card-text {
+  margin-top: -10px;
+}
+
+.card-text > p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.btn-primary {
+  width: 150px;
+}
+
+@media (max-width: 768px) {
+
+
+  .profile {
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  .card-text p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 376px) {
+  .card {
+    margin-top: 25px;
+  }
 }

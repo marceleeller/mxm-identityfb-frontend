@@ -12,7 +12,7 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   public signOutExternal= () => {
-    localStorage.removeItem('token');
+    localStorage.clear();
     console.log("token deleted")
   }
 
