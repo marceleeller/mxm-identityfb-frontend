@@ -11,6 +11,9 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private router: Router, private toastr: ToastrService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if (req.url.endsWith('/entrar')) {
+      return next.handle(req);
+    }
     const token = localStorage.getItem('token');
 
     if (token) {
@@ -24,7 +27,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if (err instanceof HttpErrorResponse && err.status === 401) {
           this.toastr.error('Sua sessão expirou, faça login novamente', '');
           localStorage.clear();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/entrar']);
         }
         return throwError(() => new Error(err.message));
       })

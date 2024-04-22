@@ -29,6 +29,31 @@
   cursor: pointer;
 }
 
+.password-feedback {
+  width: 40%;
+  line-height: .9;
+}
+
+.terms-text {
+  color: gray;
+  font-size: 12px;
+  position: absolute;
+  bottom: 80px;
+  width: 80%;
+}
+
+.register-text {
+  font-size: 12px;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 form {
   margin-top: 1.8rem !important;
+}
+
+@media (max-width: 992px){
+  .password-feedback {
+    width: 80%;
+  }
 }

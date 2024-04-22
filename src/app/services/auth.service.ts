@@ -16,6 +16,10 @@ export class AuthService {
     console.log("token deleted")
   }
 
+  register(data:any): Observable<any> {
+    return this.httpClient.post<any>(`${this.apiUrl}/auth/register`, data).pipe(first())
+  }
+
   login(data:any): Observable<any> {
     return this.httpClient.post<any>(`${this.apiUrl}/auth/login`, data).pipe(first())
   }
@@ -31,3 +35,4 @@ export class AuthService {
   }
 
 }
+
